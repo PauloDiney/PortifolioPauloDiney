@@ -10,8 +10,8 @@ function RocketModel({ scale = 1, rotation = [0, 0, 0] }) {
   const meshRef = useRef();
   
   // Carregar materiais e objeto
-  const materials = useLoader(MTLLoader, '/src/assets/3D/10475_Rocket_Ship_v1_L3.mtl');
-  const obj = useLoader(OBJLoader, '/src/assets/3D/10475_Rocket_Ship_v1_L3.obj', (loader) => {
+  const materials = useLoader(MTLLoader, '/3D/10475_Rocket_Ship_v1_L3.mtl');
+  const obj = useLoader(OBJLoader, '/3D/10475_Rocket_Ship_v1_L3.obj', (loader) => {
     materials.preload();
     loader.setMaterials(materials);
   });
