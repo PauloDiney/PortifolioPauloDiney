@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+
+/* Seção Projects inicia invisível */
+#projects {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    position: relative;
+    z-index: 10; /* Fica por cima da máscara */
+}
+
+/* Estilos limpos sem pin-spacer */
+
+.main{
+    background-color: #f20e0e;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 3rem;
+    position: relative;
+    overflow: visible;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.wave-down{
+    position: absolute;
+    bottom: -50%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 0;
+}
+
+.main-container{
+    flex: 1;
+    max-width: 60%;
+    z-index: 2;
+}
+
+.main-title{
+    padding-top: 20px;
+    font-family: 'bungee', cursive;
+    letter-spacing: .4rem;
+    font-size: 2rem;
+    text-shadow: -5px 5px 2px #313131;
+    color: #fafafa;
+}
+
+.main-title h1 {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.main-title h1 span {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.main-text{
+    max-width: 1000px;
+    line-height: 1.6;
+    font-family: 'oswald', sans-serif;
+    font-size: 1.3rem;
+    margin-top: 20px;
+    text-align: justify;
+    letter-spacing: .1rem;
+    color: #fafafa;
+}
+
+.main-content{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 400px;
+    max-width: 40%;
+    overflow: visible;
+    z-index: 2;
+}
+
+.base {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 20px;
+    z-index: 1;
+}
+
+.gif-animation{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    width: 50%;
+    height: 100%;
+    min-height: 400px;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+Canvas{
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+
+/* Máscara de clip-path para transição */
+.mask-clip-path {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 200px;
+    height: 200px;
+    background-color: #0d1117;
+    border-radius: 100%;
+    z-index: -1; /* Fica atrás de tudo quando não está animando */
+    will-change: transform, opacity, z-index;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none; /* Não interfere em cliques */
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .main {
+        gap: 1.5rem;
+        padding: 2.5rem;
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+        letter-spacing: .3rem;
+    }
+
+    .main-text {
+        font-size: 1.2rem;
+    }
+
+    .gif-animation {
+        width: 60%;
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main {
+        flex-direction: column;
+        min-height: auto;
+        padding: 2rem;
+        gap: 2rem;
+    }
+    
+    .main-container,
+    .main-content {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .main-container {
+        order: 1;
+        text-align: center;
+    }
+
+    .main-content {
+        order: 2;
+        min-height: 300px;
+    }
+    
+    .main-title {
+        font-size: 1.6rem;
+        letter-spacing: .3rem;
+    }
+    
+    .main-text {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .gif-animation {
+        width: 70%;
+        min-height: 300px;
+    }
+
+    .wave-down {
+        bottom: -30%;
+    }
+}
+
+@media (max-width: 768px) {
+    .main {
+        padding: 1.5rem;
+        gap: 1.5rem;
+        min-height: auto;
+    }
+    
+    .main-title {
+        font-size: 1.4rem;
+        letter-spacing: .2rem;
+        padding-top: 10px;
+    }
+
+    .main-title h1 {
+        line-height: 1.2;
+    }
+    
+    .main-text {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-top: 15px;
+    }
+    
+    .main-content {
+        min-height: 250px;
+    }
+
+    .gif-animation {
+        width: 80%;
+        min-height: 250px;
+    }
+
+    .wave-down {
+        bottom: -25%;
+    }
+
+    .mask-clip-path {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .main-title {
+        font-size: 1.2rem;
+        letter-spacing: .15rem;
+        text-shadow: -3px 3px 1px #313131;
+    }
+
+    .main-text {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        letter-spacing: .05rem;
+    }
+
+    .main-content {
+        min-height: 200px;
+    }
+
+    .gif-animation {
+        width: 90%;
+        min-height: 200px;
+    }
+
+    .wave-down {
+        bottom: -20%;
+    }
+
+    .mask-clip-path {
+        width: 120px;
+        height: 120px;
+        top: 8%;
+    }
+
+    .base {
+        width: 90%;
+        height: 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    .main {
+        padding: 0.8rem;
+    }
+    .wave-down{
+        bottom: -10%;
+    }
+
+    .main-title {
+        font-size: 1rem;
+        letter-spacing: .1rem;
+    }
+
+    .main-text {
+        font-size: 0.85rem;
+    }
+
+    .main-content {
+        min-height: 180px;
+    }
+
+    .gif-animation {
+        width: 100%;
+        min-height: 180px;
+    }
+
+    .mask-clip-path {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Ajustes para orientação landscape em mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .main {
+        flex-direction: row;
+        padding: 1rem 2rem;
+    }
+
+    .main-container {
+        max-width: 60%;
+        text-align: left;
+    }
+
+    .main-content {
+        max-width: 40%;
+        min-height: 200px;
+    }
+
+    .main-text {
+        text-align: justify;
+    }
+
+    .gif-animation {
+        width: 100%;
+    }
+}
+
